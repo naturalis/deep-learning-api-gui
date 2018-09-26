@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<title>Naturalis - Soortherkenning op basis van veldfoto's</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dropzone.css">
+<link rel="stylesheet" href="css/inline_templates.css" />
+<link rel="stylesheet" href="css/custom.css" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="js/config.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/inline_templates.js"></script>
+<script src="js/functions.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+
+ <link rel="shortcut icon" href="img/favicon.ico">
+
+<body>
+
+<div class="w3-top" >
+  <div class="w3-bar w3-black w3-card top-bar">
+    <div class="header-titles">
+      <h1><text>mainTitle</text></h1>
+      <div style="margin-top:-10px">
+        <text>subTitle</text>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content">
+
+  <div class="w3-container w3-content w3-center w3-padding-64 content-container">
+    <p class="w3-justify">
+
+      <div class="dropzone" id="dropzone">
+        <div class="buttons" style="height:200px">
+          <input type="image" src="img/icons8-upload-24.png" class="upload" id="uploadButton" name="upload" onclick="zone.removeAllFiles();"><br />
+          <input type="image" src="img/icons8-synchronize-filled-50.png" class="clear" onclick="clearAll();">
+        </div>
+      </div>
+
+      <div id="results">
+          <text>resultsPlaceholder</text>
+      </div>
+
+      <div id="message" style="">
+      </div>
+
+    </p>
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="w3-bar w3-dark-grey w3-container w3-padding-64 w3-black w3-xlarge footer-container">
+
+<div style="max-width: 750px;margin-left: auto;margin-right: auto">
+
+    <p class="w3-small" style="text-align: center">
+      <text>sourceLine1</text><br />
+      <text>sourceLine2</text>
+    </p>
+
+    <div class="links-block">
+
+      <p class="w3-small">
+        <a id="guiDocLink" href="doc.html" target=""><text>guiDocItem</text></a><br />
+        <a id="taxonLink" href="" target="_blank"><text>taxonDocItem</text></a> (JSON)<br />
+        <a href="mailto:identify@naturalis.nl"><text>contactItem</text></a><br /><br />
+        <a href="#" id="login-link" onclick="doLogin();return false;"><text>loginItem</text></a>
+      </p>
+
+    </div>
+
+    <div class="links-block">
+
+      <p class="w3-small">
+        <b><text>initiativeHeader</text></b><br />
+        <table><tr>
+          <td>
+            <a href="https://www.naturalis.nl/" target="_blank"><img src="img/logo_Naturalis_rgb_wit.png" class="logo"></a>
+            <p class="w3-small"><a class="logo-link" href="https://www.naturalis.nl/" target="_blank">Naturalis</a></p></td>
+          <td>
+            <a href="https://cosmonio.com/" target="_blank"><img src="img/cosmonio-c-logo.png" class="logo"></a>
+            <p class="w3-small"><a class="logo-link" href="https://cosmonio.com/" target="_blank">COSMONiO</a></p></td>
+          <td>
+            <a href="https://waarneming.nl/" target="_blank"><img src="img/observation-logo.png" class="logo"></a>
+            <p class="w3-small"><a class="logo-link" href="https://waarneming.nl/" target="_blank">Observation.org</a></p></td>
+        </tr></table>
+      </p>
+
+    </div>
+
+    <div class="links-block">
+
+      <p class="w3-small">
+        <b><text>cooperationHeader</text></b><br />
+        <table><tr>
+          <td>
+            <a href="https://www.eis-nederland.nl/" target="_blank"><img src="img/eis_logo.png" class="logo"></a>
+            <p class="w3-small"><a class="logo-link" href="https://www.eis-nederland.nl/" target="_blank">EIS Nederland</a></p></td>
+          <td>
+            <a href="https://www.natuurpunt.be/" target="_blank"><img src="img/natuurpunt.png" class="logo"></a>
+            <p class="w3-small"><a class="logo-link" href="https://www.natuurpunt.be/" target="_blank">Natuurpunt</a></p></td>
+        </tr></table>
+      </p>
+
+    </div>
+
+</div>
+
+</footer>
+
+ 
+<div id="dialog" title="Autorisatie vereist" style="display: none">
+  <p>
+    <input type="text" id="auth_username" placeholder="username" value="" maxlength="64" style="margin-bottom: 5px;width: 250px;"><br />
+    <input type="password" id="auth_password" placeholder="password" value="" maxlength="64" style="margin-bottom: 5px;width: 250px;"><br />
+  </p>
+</div>
+
+<script>
+
+Dropzone.autoDiscover = false;
+
+var lastResults;
+var credentials = { user: null, password: null };
+var isMobile;
+var requireAuthorization;
+
+$(document).ready(function()
+{
+    acquireInlineTemplates();
+    setIsMobile();
+    setRequireAuthorization();
+    runRequireAuthorization();
+
+    var dropOptions = {
+      url: apiUrl,
+      timeout: 60000, //ms
+      parallelUploads: isMobile ? maxFileUploads.mobile : maxFileUploads.desktop,
+      maxFiles: isMobile ? maxFileUploads.mobile : maxFileUploads.desktop,
+      uploadMultiple: !isMobile,
+      paramName: myParamName,
+      autoProcessQueue: true,
+      method: "post",
+      capture: null,
+      thumbnailHeight: 200,
+      thumbnailWidth: 200,
+      thumbnailMethod: "contain",
+      clickable: "#uploadButton",
+      dictDefaultMessage: isMobile ? getText("dropzoneStartMessageMobile") : getText("dropzoneStartMessage"),
+      dragover: function()
+      {
+        $('.dropzone').css('background-color','green');
+      },
+      dragleave: function()
+      {
+        $('.dropzone').css('background-color','#fff');
+      },
+      drop: function()
+      {
+        zone.removeAllFiles();      
+        $("#message").toggle(false);
+        $("#results").html("");
+        $(".dropzone").css('background-color','#fff');
+      },
+      maxfilesexceeded: function(file)
+      {
+        zone.removeFile(file);
+      },
+      success: function (req, results)
+      {
+        // console.log(results);
+        lastResults = results;
+        printPredictions();
+        $('.dz-progress').hide();
+        $('#results').show();
+        $('.dropzone').get(0).scrollIntoView();
+        $('.dropzone .clear').toggle(true);
+      },
+      error: function(file, message, xhr)
+      {
+        if (xhr && (xhr.status == 429 || xhr.status == 0))
+        {
+          message = getText("httpError429");
+        } else
+        if (xhr && xhr.status == 400) // bad request
+        {
+          message = getText("httpError400");
+        } else
+        if (xhr && xhr.status == 405) // method not allowed
+        {
+          message = getText("httpError405");
+        } else
+        if (xhr && xhr.status == 415) // unsupported media type
+        {
+          message = getText("httpError415");
+        } else
+        if (xhr && xhr.status == 500) // general server error
+        {
+          message = getText("httpError500");
+        } else
+        if (xhr && xhr.status == 503) // service unavailabke
+        {
+          message = getText("httpError503");
+        } else
+        if (xhr && xhr.status == 401) // authorization (entered wrong username/password)
+        {
+          resetCredentials();
+          checkCredentials();
+        }
+
+        $("#message").show();
+        $("#message").html(getText(message));
+      }
+    };
+
+    zone = new Dropzone("div#dropzone", dropOptions);
+
+    document.onpaste = function(event)
+    {
+      zone.removeAllFiles();
+      var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+      for (index in items)
+      {
+        var item = items[index];
+        if (item.kind === 'file')
+        {
+          zone.addFile(item.getAsFile());
+        }
+      }
+    }
+
+    $('.dropzone .clear').on('click',function()
+    {
+        clearAll();
+    })
+
+    $('text').each(function()
+    {
+      $(this).replaceWith(getText($(this).text()));
+    });
+
+    $("#taxonLink").attr("href",taxonIdentUrl.replace('/auth',''));
+
+    $('body').on( "keydown", function(event)
+    {
+      if (event.altKey==true && event.which==76) // alt+l
+      {
+        $("#login-link").trigger("click");
+      }
+    });
+});
+
+</script>
+
+<!-- templates -->
+<div class="inline-templates" id="gaugeTpl">
+<!--
+<svg class="gauge" title="%probability%">
+  <path fill="#AAA" d="M 40 0 A 40 40 0 1 0 40 80 A 40 40 0 1 0 40 0 Z M 40 20 A 20 20 0 1 1 40 60 A 20 20 0 1 1 40 20 Z"/>
+  <path id="gauge-%id%" fill="#fff" d="M 80 40 A 40 40 0 1 0 40 80 L 40 60 A 20 20 0 1 1 60 40 L 80 40"/>
+</svg>
+-->
+</div>
+
+<div class="inline-templates" id="resultRowTpl">
+<!--
+  <tr>
+    <td>%gauge%</td>
+    <td class="labels">
+      <span 
+        data-option-number="%id%" 
+        data-probability="%probability%" 
+        data-vernacular="%vernacular_name%"
+        class="name vernacular" 
+        id="vernacular-%lookup_id%"
+        title="%probability%">
+        %vernacular_name%
+      </span>
+      <span class="name scientific italic" id="scientific-%lookup_id%">%taxon_name%</span>
+      <span class="taxonLinks">
+        <text>moreInfo</text>
+        <a href="https://waarneming.nl/soort/info/%taxon_id%" target="_blank">Waarneming.nl</a>
+        <a href="https://waarnemingen.be/soort/info/%taxon_id%" target="_blank">Waarnemingen.be</a> 
+        %nsr_link%
+      </span>
+    </td>
+  </tr>
+-->
+</div>
+
+<div class="inline-templates" id="nsrLinkTpl">
+<!--
+<a href="http://www.nederlandsesoorten.nl/nsr/concept/%taxon_id%" target="_blank">Nederlands Soortenregister</a>
+-->
+</div>
+
+
+<div class="inline-templates" id="resultTableTpl">
+<!--
+  <table id="probabilities">%body%</table>
+-->
+</div>
+<!-- /templates -->
+
+</body>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12465412-16"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-12465412-16', { 'anonymize_ip': true })
+
+</script>
+
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<title>Naturalis - Soortherkenning op basis van veldfoto's</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom.css" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato">
+
+<script src="js/config.js"></script>
+<script src="js/functions.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<body>
+
+<div class="w3-top" >
+  <div class="w3-bar w3-black w3-card top-bar">
+    <div class="header-titles">
+      <h1><text>mainTitle</text></h1>
+      <div style="margin-top:-10px">
+        <text>subTitle</text>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="padding:5px 20px 10px 20px;">
+
+<p>
+    <a href="index.html">Terug naar Soortherkenning</a>
+</p>
+
+<h1>Wat doet deze soortherkenningservice?</h1></a>
+        
+    <p>
+        De service herkent in Nederland en België voorkomende soorten planten, dieren en paddenstoelen op basis van veldfoto’s.
+        Het onderliggende herkenningsmodel is getraind op basis van waarnemingfoto’s van waarneming.nl. <a
+           id="taxonLink" href="" target="_blank">Hier vind je een lijst van alle 16148 soorten</a> (JSON) die in
+        het model voorkomen. De webservice herkent veel soorten, maar gecultiveerde of exotische soorten zoals sommige
+        sierplanten en huisdierrassen worden niet altijd correct herkend.
+    </p>
+
+    <p>
+        Beeldherkenning is een <i>eerste</i> stap naar identificatie van een soort. Raadpleeg altijd andere bronnen om
+        kenmerken te
+        checken of foto's te vergelijken. Dit kan bijvoorbeeld op <a
+            href="https://soortenregister.nl">Nederlands Soortenregister</a> en <a
+            href="https://waarneming.nl">Waarneming.nl</a>.
+    </p>
+
+    <h1>Werking</h1>
+
+    <p>
+        Upload een foto van een waarneming om de soort op de foto te herkennen. Herkenning werkt het best wanneer de te
+        identificeren plant of dier zo prominent mogelijk in de foto te zien is; gebruik scherpe
+        foto’s, en maak zo nodig handmatig een uitsnede uit de foto.<br/>
+        Wanneer je meerdere foto's van dezelfde waarneming hebt, kan het de kans op een goede identificatie vergroten
+        wanneer je meer dan een foto tegelijk upload. Je kunt maximaal vier foto's tegelijk uploade (werkt niet op een mobiel apparaat).
+    </p>
+
+    <h2>Uploaden van foto’s</h2>
+    <p>
+        Open de webpagina van de herkenningsservice en voeg de foto of foto’s van je waarneming toe. Dit kan op drie
+        manieren:
+    </p>
+
+    <ul>
+        <li>Bestanden selecteren. Klik op het grote witte vlak. Er opent een ‘open bestand’-venster. Navigeer naar de
+            bestandslokatie van de foto’s. Selecteer een of meerdere foto’s van dezelfde waarneming. Je selecteert
+            meerdere foto’s door de Ctrl-toets vast te houden en de betreffende bestanden aan te klikken. Klik
+            vervolgens op ‘open’. De bestanden worden vervolgens automatisch geupload.
+        </li>
+        <li>Drag & drop. Selecteer de foto of foto’s in een verkenner, sleep ze naar de webpagina en laat ze los boven
+            het vlak wanneer het vlak groen oplicht. De bestanden worden vervolgens automatisch geupload.
+        </li>
+        <li>Plakken uit de copy/paste-buffer. Wanneer je een afbeelding hebt gekopieerd, kun je die in de webpagina
+            plakken. Let op, dit
+            werkt alleen als je de afbeelding zelf hebt gekopieerd, niet het bestand. Een manier om dat te doen is door
+            met de rechter
+            muisknop op een afbeelding in je webbrowser te klikken en ‘Afbeelding kopiëren’ te kiezen. De afbeelding zit
+            nu in de
+            copy/paste-buffer. Ga naar de webpagina van de herkenningsservice en klik Ctrl+V (plakken). De afbeelding
+            verschijnt in het
+            uploadvlak en wordt naar de server gestuurd. Op deze manier kan maar een afbeelding tegelijk worden
+            geupload.
+        </li>
+    </ul>
+
+    <p>
+        De service kan maximaal vier afbeeldingen tegelijk per identificatie verwerken (één als je de site op een mobiel
+        beschikbaar benadert).
+        Meerdere foto’s tegelijk uploaden van verschillende soorten heeft geen zin.
+        De service accepteert JPG, PNG en BMP bestanden. Er is op dit moment geen beperking aan de omvang van de
+        bestanden.
+    </p>
+
+    <h2>Identificatie</h2>
+    <p>
+        Nadat je een foto of foto’s hebt geupload, voert de webservice automatisch de soortherkenning uit, en berekent de
+        waarschijnlijkheid waarmee je waarneming overeenkomt met de in het model aanwezige soorten. Het resultaat daarvan is
+        een lijstje van drie mogelijke soorten, in aflopende volgorde van waarschijnlijkheid. De berekende waarschijnlijkheden worden
+        niet getoond; in plaats daarvan wordt per soort indicatie getoond door middel van een metertje. Wanneer het model voor de eerste
+        soort een waarschijnlijkheid van meer dan 95% heeft berekend, wordt alleen die soort getoond.
+    </p>
+    <p>
+        Het model berekent altijd de waarschijnlijkheid voor alle soorten die in het model zitten, en doet dat op zo’n manier dat de som
+        van al die waarschijnlijkheden 100% is. Er worden echter nooit meer dan drie resultaten getoond. Dat kan er toe leiden dat,
+        wanneer het model niet zeker is van de identificatie, er drie soorten getoond worden die samen een waarschijnlijkheid hebben van
+        (veel) minder dan 100%. Het is dan wel nog steeds zo dat de eerste getoonde soort volgens het model de meest waarschijnlijke
+        is.
+    </p>
+    <p>
+        Naast de waarschijnlijkheden worden voorbeeldfoto's van de meest waarschijnlijke foto's getoond. Deze voorbeeld foto's zijn
+        algemene foto's voor deze soorten en niet noodzakelijk degene die het meeste lijken op de herkende foto. Er worden ook links
+        naar de websites van <a href="https://soortenregister.nl">Nederlands Soortenregister</a>, <a
+            href="https://waarneming.nl">Waarneming.nl</a> en <a href="https://waarnemingen.be">Waarnemingen.be</a> getoond. Hier kan
+        meer informatie en foto's van de gevonden soorten gevonden worden.
+    </p>
+
+    <h3>Technische fouten</h3>
+    <p>
+        Wanneer er na het uploaden van een foto geen resultaten verschijnen, is er waarschijnlijk een technische fout
+        opgetreden in de identificatie. Foutmelding worden weergegeven in een wit vlak onder de <i>drag & drop</i>-zone.
+        Ververs als er een fout optreedt de pagina (F5 of Ctrl-r). Als hetzelfde bestand een fout blijft geven, is er
+        mogelijk iets mis met je foto.
+    </p>
+
+    <h2>Gebruikslimiet</h2>
+    <p>
+        U kunt maximaal 10 identificaties per dag uitvoeren.
+    </p>
+
+    <a name="beta"></a>
+    <h2>Beta versie</h2>
+    <p>Dit is een beta versie van de service. Alle opmerkingen zijn zeer welkom. Er worden geen garanties gegeven op
+        <ul>
+            <li>De correctheid van de herkenningen</li>
+            <li>De compleetheid van de soortenlijst</li>
+            <li>De beschikbaarheid van de webservice</li>
+            <li>De werking van de webinterface</li>
+        </ul>
+    </p>
+
+        <h2>Privacy statement</h2>
+        <p>
+            Op deze service is de <a href="https://www.naturalis.nl/nl/info/privacy/">privacyverklaring van Naturalis</a>
+            van toepassing. In aanvulling daarop:
+        <ul>
+            <li>
+                Geüploade foto's worden niet opgeslagen, en worden nadat de identificatie is uitgevoerd verwijderd.
+            </li>
+            <li>
+                De Google Analytics-code die in de pagina's van deze service is opgenomen maakt gebruik van <a
+                    href="https://support.google.com/analytics/answer/2763052" target="_blank">geanonimiseerde
+                IP-adressen</a>.
+            </li>
+            <li>
+                Wij slaan de resultaten van alle identificaties op voor gebruik bij verbetering van de dienstverlening. Dit
+                betrefte <i>alleen</i> de uitkomsten van de identificatie; zoals eerder vermeld slaan we de foto's op basis
+                waarvan de identificatie werd uitgevoerd <i>niet</i> op.
+            </li>
+        </ul>
+
+        </p>
+    </div>
+
+  <!-- Footer -->
+  <footer class="w3-bar w3-dark-grey w3-container w3-padding-64 w3-black w3-xlarge footer-container">
+
+    <div style="max-width: 750px;margin-left: auto;margin-right: auto">
+
+        <p class="w3-small" style="text-align: center">
+          <text>sourceLine1</text><br />
+          <text>sourceLine2</text>
+        </p>
+
+        <div class="links-block">
+
+          <p class="w3-small">
+            <a id="guiDocLink" href="doc.html" target=""><text>guiDocItem</text></a><br />
+            <a id="apiDocLink" href="" target="_blank"><text>apiDocItem</text></a><br />
+            <a id="taxonLink" href="" target="_blank"><text>taxonDocItem</text></a><br />
+            <a href="mnailto:identify@naturalis.nl"><text>contactItem</text></a>
+          </p>
+
+        </div>
+
+        <div class="links-block">
+
+          <p class="w3-small">
+            <b><text>initiativeHeader</text></b><br />
+            <table><tr>
+              <td>
+                <a href="https://www.naturalis.nl/" target="_blank"><img src="img/logo_Naturalis_rgb_wit.png" class="logo"></a>
+                <p class="w3-small"><a class="logo-link" href="https://www.naturalis.nl/" target="_blank">Naturalis</a></p></td>
+              <td>
+                <a href="https://cosmonio.com/" target="_blank"><img src="img/cosmonio-c-logo.png" class="logo"></a>
+                <p class="w3-small"><a class="logo-link" href="https://cosmonio.com/" target="_blank">COSMONiO</a></p></td>
+              <td>
+                <a href="https://waarneming.nl/" target="_blank"><img src="img/observation-logo.png" class="logo"></a>
+                <p class="w3-small"><a class="logo-link" href="https://waarneming.nl/" target="_blank">Observation.org</a></p></td>
+            </tr></table>
+          </p>
+
+        </div>
+
+        <div class="links-block">
+
+          <p class="w3-small">
+            <b><text>cooperationHeader</text></b><br />
+            <table><tr>
+            <td>
+                <a href="https://www.eis-nederland.nl/" target="_blank"><img src="img/eis_logo.png" class="logo"></a>
+                <p class="w3-small"><a class="logo-link" href="https://www.eis-nederland.nl/" target="_blank">EIS Nederland</a></p></td>
+              <td>
+                <a href="https://www.natuurpunt.be/" target="_blank"><img src="img/natuurpunt.png" class="logo"></a>
+                <p class="w3-small"><a class="logo-link" href="https://www.natuurpunt.be/" target="_blank">Natuurpunt</a></p></td>
+            </tr></table>
+          </p>
+
+        </div>
+
+    </div>
+
+    </footer>
+</body>
+
+<script>
+
+$(document).ready(function()
+{
+    $('text').each(function()
+    {
+       $(this).replaceWith(getText($(this).text()));
+    });
+
+    $("#taxonLink").attr("href",taxonIdentUrl.replace('/auth',''));
+})
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12465412-16"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-12465412-16', { 'anonymize_ip': true })
+
+</script>
+
+</html>
