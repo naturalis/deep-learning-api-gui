@@ -17,8 +17,8 @@ var texts = {
       of plak een afbeelding uit het klembord (ctrl+v).<br /><br />
       Voor nog betere resultaten: voeg meerdere afbeeldingen <b>tegelijk</b> toe van dezelfde waarneming (maximaal 4).`,
     "dropzoneStartMessageMobile": `<br /><br /><br />Klik op de upload-knop om een foto te maken of te selecteren.`,
-    "sourceLine1" : "Herkenningen zijn gebaseerd op beelden van Waarneming.nl",
-    "sourceLine2" : "Draag bij aan het verbeteren van de herkenning door je waarnemingen op te slaan op Waarneming.nl",
+    "sourceLine1" : "Herkenningen zijn gebaseerd op beelden van <a href='https://waarneming.nl/' target='_blank'>Waarneming.nl</a>",
+    "sourceLine2" : "<a href='https://waarneming.nl/registreer.php' target='_blank'>Draag bij</a> aan het verbeteren van de herkenning door je waarnemingen op te slaan op Waarneming.nl",
     "guiDocItem" : "Documentatie",
     "apiDocItem" : "API documentatie",
     "loginItem" : "Login",

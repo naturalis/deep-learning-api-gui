@@ -122,6 +122,8 @@
 
     </div>
 
+    <span style="font-size:0.8em">DEBUG: <span id="whatever"></span></span>
+
 </div>
 
 </footer>
@@ -266,6 +268,10 @@ $(document).ready(function()
         $("#login-link").trigger("click");
       }
     });
+
+
+  $("#whatever").html(apiUrl);
+
 });
 
 </script>

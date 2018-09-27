@@ -64,7 +64,7 @@ function printPredictions()
 				.replace(/%probability%/g,s.probability)
 				.replace(/%vernacular_name%/g,'') // filled in taxonLookup()-callback
 				.replace(/%taxon_name%/g,s.taxon.name)
-				.replace(/%taxon_id%/g,s.taxon.id)
+				.replace(/%taxon_id%/g,s.taxon.id.replace(/@(.*)/,''))
 				.replace("%nsr_link%",nsrTpl)
 				.replace(/%lookup_id%/g,makeJQueryResistantId(s.taxon.id))
 		);
