@@ -30,18 +30,6 @@
 
 <body>
 
-<div class="w3-top" >
-  <div class="w3-bar w3-black w3-card top-bar">
-    <div class="header-titles">
-      <h1><text>mainTitle</text></h1>
-      <div style="margin-top:-10px">
-        <text>subTitle</text>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <!-- Page content -->
 <div class="w3-content">
 
@@ -65,69 +53,6 @@
     </p>
   </div>
 </div>
-
-  <!-- Footer -->
-  <footer class="w3-bar w3-dark-grey w3-container w3-padding-64 w3-black w3-xlarge footer-container">
-
-<div style="max-width: 750px;margin-left: auto;margin-right: auto">
-
-    <p class="w3-small" style="text-align: center">
-      <text>sourceLine1</text><br />
-      <text>sourceLine2</text>
-    </p>
-
-    <div class="links-block">
-
-      <p class="w3-small">
-        <a id="guiDocLink" href="doc.html" target=""><text>guiDocItem</text></a><br />
-        <a id="taxonLink" href="" target="_blank"><text>taxonDocItem</text></a> (JSON)<br />
-        <a href="mailto:identify@naturalis.nl"><text>contactItem</text></a><br /><br />
-        <a href="#" id="login-link" onclick="doLogin();return false;"><text>loginItem</text></a>
-      </p>
-
-    </div>
-
-    <div class="links-block">
-
-      <p class="w3-small">
-        <b><text>initiativeHeader</text></b><br />
-        <table><tr>
-          <td>
-            <a href="https://www.naturalis.nl/" target="_blank"><img src="img/logo_Naturalis_rgb_wit.png" class="logo"></a>
-            <p class="w3-small"><a class="logo-link" href="https://www.naturalis.nl/" target="_blank">Naturalis</a></p></td>
-          <td>
-            <a href="https://cosmonio.com/" target="_blank"><img src="img/cosmonio-c-logo.png" class="logo"></a>
-            <p class="w3-small"><a class="logo-link" href="https://cosmonio.com/" target="_blank">COSMONiO</a></p></td>
-          <td>
-            <a href="https://waarneming.nl/" target="_blank"><img src="img/observation-logo.png" class="logo"></a>
-            <p class="w3-small"><a class="logo-link" href="https://waarneming.nl/" target="_blank">Observation.org</a></p></td>
-        </tr></table>
-      </p>
-
-    </div>
-
-    <div class="links-block">
-
-      <p class="w3-small">
-        <b><text>cooperationHeader</text></b><br />
-        <table><tr>
-          <td>
-            <a href="https://www.eis-nederland.nl/" target="_blank"><img src="img/eis_logo.png" class="logo"></a>
-            <p class="w3-small"><a class="logo-link" href="https://www.eis-nederland.nl/" target="_blank">EIS Nederland</a></p></td>
-          <td>
-            <a href="https://www.natuurpunt.be/" target="_blank"><img src="img/natuurpunt.png" class="logo"></a>
-            <p class="w3-small"><a class="logo-link" href="https://www.natuurpunt.be/" target="_blank">Natuurpunt</a></p></td>
-        </tr></table>
-      </p>
-
-    </div>
-
-    <span style="font-size:0.8em">DEBUG: <span id="whatever"></span></span>
-
-</div>
-
-</footer>
-
  
 <div id="dialog" title="Autorisatie vereist" style="display: none">
   <p>
@@ -269,8 +194,12 @@ $(document).ready(function()
       }
     });
 
-
-  $("#whatever").html(apiUrl);
+  $(document).ready(function()
+  {
+    appendHtmlFileToBody( "_header.html", true );
+    appendHtmlFileToBody( "_footer.html" );
+    appendHtmlFileToBody( "_googleAnalytics.html" );
+  })
 
 });
 
@@ -327,16 +256,5 @@ $(document).ready(function()
 <!-- /templates -->
 
 </body>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12465412-16"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-12465412-16', { 'anonymize_ip': true })
-
-</script>
 
 </html>

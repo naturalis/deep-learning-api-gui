@@ -11,6 +11,12 @@ body {
     background-color: rgb(242, 242, 242);
 }
 
+@media only screen and (min-width: 755px) {
+	body {
+		font-size: 100%;
+	}
+}
+
 .w3-top {
 	position: relative;
 }
@@ -32,13 +38,13 @@ body {
 
 .header-titles {
 	margin-top:10px;
-	max-width:400px;
+	max-width:550px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
 	.header-titles {
         margin-top:5px;
         max-width:450px;

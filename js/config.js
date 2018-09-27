@@ -13,16 +13,16 @@ var texts = {
     "mainTitle" : "Soortherkenning",
     "subTitle" : "Demonstratie-site van de service voor herkenning van in het wild voorkomende Nederlandse en Belgische soorten op basis van veldfoto's",
     "resultsPlaceholder" : "resultaten", 
-    "dropzoneStartMessage": `<br /><br />Voor identificatie, <i>drag & drop</i> hier afbeelding(en),<br/>klik op de upload-knop om afbeelding(en) te selecteren<br/>
+    "dropzoneStartMessage": `<br />Voor identificatie, <i>drag & drop</i> hier afbeelding(en),<br/>klik op de upload-knop om afbeelding(en) te selecteren<br/>
       of plak een afbeelding uit het klembord (ctrl+v).<br /><br />
       Voor nog betere resultaten: voeg meerdere afbeeldingen <b>tegelijk</b> toe van dezelfde waarneming (maximaal 4).`,
     "dropzoneStartMessageMobile": `<br /><br /><br />Klik op de upload-knop om een foto te maken of te selecteren.`,
-    "sourceLine1" : "Herkenningen zijn gebaseerd op beelden van <a href='https://waarneming.nl/' target='_blank'>Waarneming.nl</a>",
+    "sourceLine1" : "Deze service raadpleegt het herkenningsmodel van <a href='https://waarneming.nl/' target='_blank'>Waarneming.nl</a>",
     "sourceLine2" : "<a href='https://waarneming.nl/registreer.php' target='_blank'>Draag bij</a> aan het verbeteren van de herkenning door je waarnemingen op te slaan op Waarneming.nl",
     "guiDocItem" : "Documentatie",
     "apiDocItem" : "API documentatie",
     "loginItem" : "Login",
-    "taxonDocItem" : "Soorten in database",
+    "taxonDocItem" : "Soorten in database (JSON)",
     "contactItem" : "Contact",
     "initiativeHeader" : "Een initiatief van",
     "cooperationHeader" : "In samenwerking met",

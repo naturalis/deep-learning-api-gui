@@ -1,3 +1,29 @@
+function appendHtmlFileToBody( file, prepend )
+{
+	$.ajax({
+		method: "GET",
+		url: file
+	})
+	.done( function( data )
+	{
+		if (prepend)
+		{
+			$('body').prepend( data );
+		}
+		else
+		{
+			$('body').append( data );
+		}
+
+	    $('text').each(function()
+	    {
+	      $(this).replaceWith(getText($(this).text()));
+	    });
+
+	});
+
+}
+
 function getText(tag)
 {
   if (texts[currentLanguage] && texts[currentLanguage][tag])
@@ -281,3 +307,5 @@ function showAuthorizationDialog()
 	  }
 	});
 }
+
+

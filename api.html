@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html>
+<title>Naturalis - Soortherkenning op basis van veldfoto's</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom.css" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato">
+
+<script src="js/config.js"></script>
+<script src="js/functions.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<body>
+
+<div class="w3-content" style="padding:5px 20px 10px 20px;">
+
+		<p>
+		    <a href="index.html">Terug naar Soortherkenning</a>
+		</p>
+
+
+		<h1 class="western"><a name="_bzw5mdulm3e7"></a>Observation
+		Identification Service API specifications</h1>
+		<p style="margin-bottom: 0in">Notes on terminology</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">Identification <i>model
+			implementations</i> are published instead of models (a model
+			implementation is a combination of one or more models and a
+			configuration of how to use them)</p>
+		</ul>
+		<h1 class="western"><a name="_x4323j33z1s0"></a>API endpoints</h1>
+		<p style="margin-bottom: 0in">The v1 API is the first stable version
+		of the API. Updates to the v1 API will be backwards compatible with
+		existing v1 applications. 
+		</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">&lt;tag&gt; refers to a manually
+			assigned name for a specific model implementation</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<table width="601" cellpadding="7" cellspacing="0">
+			<col width="100">
+			<col width="315">
+			<col width="142">
+			<tr valign="top">
+				<td width="100" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0"><a href="#ocx51sq1847m"><font color="#1155cc"><u>Identify</u></font></a></p>
+				</td>
+				<td width="315" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">/v1/observation/identify</p>
+					<p style="orphans: 0; widows: 0"><br/>
+
+					</p>
+				</td>
+				<td width="142" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">Common endpoint for all model
+					implementations</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="100" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0"><br/>
+
+					</p>
+				</td>
+				<td width="315" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">/v1/observation/identify/&lt;tag&gt;</p>
+				</td>
+				<td width="142" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">Endpoint for specific
+					implementation</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="100" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+					<a href="#v6yidd8h5e8l"><font color="#1155cc"><u>Taxa</u></font></a></p>
+				</td>
+				<td width="315" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">/v1/observation/taxa/&lt;tag&gt;</p>
+					<p style="orphans: 0; widows: 0"><br/>
+
+					</p>
+				</td>
+				<td width="142" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">End point for taxa in
+					implementation</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="100" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+					<br/>
+
+					</p>
+				</td>
+				<td width="315" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">/v1/observation/taxa/&lt;tag&gt;?id=&lt;id&gt;</p>
+				</td>
+				<td width="142" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">End point for taxa in
+					implementation filtered by taxon id</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="100" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+					<a href="#wt7oaizfq0ud"><font color="#1155cc"><u>Documentation</u></font></a></p>
+				</td>
+				<td width="315" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">/v1/observation/documentation/&lt;tag&gt;</p>
+				</td>
+				<td width="142" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">End point for documentation of
+					implementation (description, release notes, etc.)</p>
+				</td>
+			</tr>
+		</table>
+		<h2 class="western"><a name="_wmuq02wt51va"></a>Specifications</h2>
+		<p style="margin-bottom: 0in"><a name="ocx51sq1847m"></a><br/>
+
+		</p>
+		<table width="600" cellpadding="7" cellspacing="0">
+			<col width="87">
+			<col width="483">
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+					title:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0"><b>Observation Identification
+					Service - Identify</b></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>description:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">provides species identification
+					implementations based on images and location</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>endpoint:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">/v1/observation/identify</p>
+					<p style="orphans: 0; widows: 0">/v1/observation/identify/&lt;tag&gt;</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>method:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">POST</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>parameters:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><u>POST</u></p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>image</b>:
+					binary image data (mandatory; 4 maximum per request)</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>location_coordinates</b>:
+					[optional] WGS84 coordinates in decimal degree notation
+					“{latitude},{longitude}”, example “40.446,79.982” (see
+					<a href="#ovjxsbacqc97"><font color="#1155cc"><u>New: preliminary
+					location support</u></font></a>)</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><u>URL (path)</u></p>
+					<p><b>tag</b>: [optional] name of implementation to be used, if no
+					name is specified the user will be redirected to the most
+					appropriate model for the location of the observation. Currently
+					the only implementation will be the Dutch/Belgium identification
+					implementation with tag “benlall” so redirects will always go
+					there.</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>response (successful):</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">HTTP code:
+					200</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">JSON-structure,
+					containing the following elements:</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<ul>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>identification</b></p>
+						<ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>image</b></p>
+							<ul>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>confidence</b></p>
+							</ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>location</b></p>
+							<ul>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>confidence</b></p>
+							</ul>
+						</ul>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>predictions[...]</b></p>
+						<ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>probability</b></p>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>taxon</b></p>
+							<ul>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>id</b></p>
+								<li/>
+		<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<b>name</b></p>
+							</ul>
+						</ul>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>model_implementation</b></p>
+						<ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>version</b></p>
+						</ul>
+					</ul>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<table width="483" cellpadding="7" cellspacing="0">
+						<col width="156">
+						<col width="32">
+						<col width="123">
+						<col width="114">
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><i><b>JSON field</b></i></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><i><b>data-<br/>
+		type</b></i></font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><i><b>values</b></i></font></p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><i><b>description</b></i></font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><b>identification.image.<br/>
+		confidence</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								“<font size="2" style="font-size: 9pt">confident” (most
+								likely prediction has a probability &gt; 0.9)</font></p>
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0">“<font size="2" style="font-size: 9pt">uncertain”
+								(most likely prediction has a probability &gt; 0.2).</font></p>
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								“” <font size="2" style="font-size: 9pt">(otherwise) </font>
+								</p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">indicates verbally the
+								confidence of the image based species identification</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>identification.location.<br/>
+		confidence</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">float</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">[0.0, 1.0], -1.0 if POST
+								field </font><font size="2" style="font-size: 9pt"><b>location_coordinates
+								</b></font><font size="2" style="font-size: 9pt">is absent</font></p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">indicates numerically the
+								confidence of the model at supplied geographical location<br/>
+		0.0
+								= low confidence</font></p>
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">1.0 = high confidence</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><b>predictions</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">array</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">top 10 predictions,
+								ordered on probability, highest first.</font></p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">most likely predictions</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><b>predictions[...].probability</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">float</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">[0.0, 1.0] </font>
+								</p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">probability
+								of match for taxon</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt"><b>predictions[...].taxon.id</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p align="left" style="border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+								<font size="2" style="font-size: 9pt">unique taxon identifier
+								in format {id_at_source}@{source_identifier}</font></p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">identifies
+								taxa in and across sources</font></p>
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>NB</b></font><font size="2" style="font-size: 9pt">
+								source_identifier = “WRN” for waarneming.nl</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>predictions[...].taxon.name</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">scientific
+								name of the taxon</font></p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">accepted
+								scientific name for taxon</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="156" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>model_implementation.<br/>
+		version</b></font></p>
+							</td>
+							<td width="32" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="123" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">unique
+								model implementation identifier</font></p>
+							</td>
+							<td width="114" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">see
+								values</font></p>
+							</td>
+						</tr>
+					</table>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+
+					</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">response (error):</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					HTTP code: 400</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;model_implementation_not_found&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;The model implementation with the
+					requested tag does not exist&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+
+					</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					HTTP code: 400</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;received_no_files&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;Did not receive any files&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+		HTTP code: 405</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;method_not_allowed&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;Method not allowed (only supports
+					POST)&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+		HTTP code: 415</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;unsupported_media_type&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;Unsupported media type&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+		HTTP code: 500</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;general_server_error&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;General server error&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">example request:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">curl
+					-X POST -F &quot;image=@sperwer_1.jpg&quot; -F
+					&quot;image=@sperwer_2.jpg&quot;\</font></font></p>
+					<p style="margin-bottom: 0in"> 
+					<font face="Consolas, serif"><font size="2" style="font-size: 10pt">https://identify.biodiversityanalysis.nl/v1/observation/identify</font></font></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">example response:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;identification&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;image&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;confidence&quot;:
+					&quot;confident&quot;</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;location&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;confidence&quot;:
+					1.0</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;predictions&quot;:
+					[</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;probability&quot;:
+					0.9970064163208008,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;taxon&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;id&quot;:
+					&quot;178@WRN&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;name&quot;:
+					&quot;Accipiter nisus&quot;</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;probability&quot;:
+					0.0029197214171290398,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;taxon&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;id&quot;:
+					&quot;117@WRN&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;name&quot;:
+					&quot;Accipiter gentilis&quot;</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;...&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;probability&quot;:
+					2.6637922090344546e-08,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;taxon&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;id&quot;:
+					&quot;326@WRN&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;name&quot;:
+					&quot;Falco columbarius&quot;</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">],</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;model_implementation&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;version&quot;:
+					&quot;1fd68f8c8cb93ec4e45049fcf9a056628e9599aa815790a2a7b568aa&quot;</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in"><br/>
+
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">Changes w.r.t. to beta (see
+		<a href="https://identify.biodiversityanalysis.nl/beta/observation/docs/api"><font color="#1155cc"><u>https://identify.biodiversityanalysis.nl/beta/observation/docs/api</u></font></a>)</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">The POST field
+			<b>location_coordinates </b>has been added 
+			</p>
+			<li/>
+		<p style="margin-bottom: 0in">The response field
+			<b>identification_advice</b> has been removed</p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">this responsibility is left to
+				the client</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">The response field <b>success</b>
+			has been removed</p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">replaced by HTTP (error) codes
+				and specific error messages</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">The <b>predictions</b> fields
+			<b>taxon_name</b> and <b>taxon_id</b> have been moved into an object
+			<b>taxon</b> with fields <b>name</b> and <b>id</b></p>
+			<li/>
+		<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+			The <b>predictions</b> field <b>vernacular_name </b>has been removed</p>
+			<li/>
+		<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0"><a name="ovjxsbacqc97"></a>
+			The response field <b>version</b> has been moved into the response
+			object <b>model_implementation</b></p>
+		</ul>
+		<h3 class="western"><a name="_y10hcbdvuvav"></a>New: preliminary
+		location support</h3>
+		<h4 class="western"><a name="_51qless3pubg"></a>Introduction 
+		</h4>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p align="justify" style="margin-bottom: 0in">The location of an
+		observation is a valuable piece of information for automated species
+		identification. For example species identification can likely be
+		improved by including probabilities from distribution models in the
+		recognition. The location is also important to warn the user that a
+		certain identification model is probably not suitable for the
+		location of the observation. As our current observation models are
+		based on Dutch/Belgium data, they currently do not apply to
+		geographical areas located far away from the Netherlands and Belgium.
+		The goal of this section is to adapt functional design of the API to
+		support location information <i>mainly for future use</i>. 
+		</p>
+		<h4 class="western"><a name="_8x78ym9eo00x"></a>Implementation for
+		API v1</h4>
+		<p style="margin-bottom: 0in">For computation of the response field
+		<b>identification.location.confidence</b> at first release of v1 we
+		use the following method:</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">The (estimated) geographical
+			<i>center</i> of the image recognition model is determined</p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">fixed to the GPS coordinates of
+				Boxtel (51.59, 5.33) for the Dutch/Belgian model</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">The estimated geographical
+			<i>radius</i> in GPS degrees of the image recognition model is
+			determined</p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">fixed to 2 degrees for the
+				Dutch/Belgian model</p>
+			</ul>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">The numerical value of
+		<b>identification.location.confidence</b> is then</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">1.00 for <b>location_coordinates</b>
+			within a distance of 0 to <i>radius</i> degrees of the <i>center</i></p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">ca. 0-226 km for Dutch/Belgian
+				model</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">0.75 for <b>location_coordinates</b>
+			within a distance of <i>radius</i> to (<i>radius</i> + 1) degrees of
+			the <i>center</i></p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">ca. 226-339 km for
+				Dutch/Belgian model</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">0.50 for <b>location_coordinates</b>
+			within a distance of (<i>radius</i> + 1<i>)</i> to (<i>radius</i> +
+			2) degrees of the <i>center</i></p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">ca. 339-452 km for
+				Dutch/Belgian model</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">0.25 for <b>location_coordinates</b>
+			within a distance of (<i>radius</i> + 2<i>)</i> to (<i>radius</i> +
+			3) degrees of the <i>center</i></p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">ca. 452-565 km for
+				Dutch/Belgian model</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">0.00 for <b>location_coordinates</b>
+			within a distance of &gt; (<i>radius</i> + 3) degrees of the <i>center</i></p>
+			<ul>
+				<li/>
+		<p style="margin-bottom: 0in">ca. &gt; 565 km for
+				Dutch/Belgian model</p>
+			</ul>
+			<li/>
+		<p style="margin-bottom: 0in">-1.00 if <b>location_coordinates</b><i>
+			</i>is not given or computation fails</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">The API documentation will state 
+		</p>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">“<b>identification.location.confidence</b>
+		indicates the confidence of the model for the supplied geographical
+		location as a number between 1.0 (high confidence) and 0.0 (no
+		confidence). The location confidence and image confidence are
+		independently calculated in this version of the API”.</p>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in"><b>Note on future versions</b></p>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">The exact implementation of the
+		numerical value is <i>likely</i> to change in updates of the API. The
+		syntactic definition of the field <b>identification.location.confidence</b><i>
+		</i>will not change.</p>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">In later versions the per class (taxon)
+		probabilities will be updated based on location. This feature is
+		independent from what is written here.</p>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in"><b>Implementation notes</b></p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">Extraction and validation of GPS
+			coordinates from photos is done by the <i>client</i>. The
+			demonstrator will not support this feature in v1</p>
+			<li/>
+		<p style="margin-bottom: 0in">No server side validation,
+			parsing or clean-up of <i>location_coordinates </i>is done in v1</p>
+			<li/>
+		<p style="margin-bottom: 0in">The proposed method is likely
+			not useful for much else than the Dutch/Belgian model. As soon as we
+			have other models we can redefine the calculation</p>
+			<li/>
+		<p style="margin-bottom: 0in">Interpretation and acting upon
+			the <b>identification.location.confidence </b>value<b> </b>is for
+			the implementing application</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in"><a name="v6yidd8h5e8l"></a><br/>
+
+		</p>
+		<table width="600" cellpadding="7" cellspacing="0">
+			<col width="87">
+			<col width="483">
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">title:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0"><b>Observation Identification
+					Service - Taxa</b></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">description:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">lists the taxa that are included
+					in an identification implementation</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>endpoint:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">/v1/observation/taxa/&lt;tag&gt;</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>method:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">GET</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>parameters:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">URL (query)</p>
+					<p style="orphans: 0; widows: 0"><b>id: </b>[optional] query field
+					for taxon id, filters the output list</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>response (successful):</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">HTTP code:
+					200</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">JSON-structure,
+					containing the following elements:</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<ul>
+						<li/>
+		<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+						<b>taxa[...]</b></p>
+						<ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>id</b></p>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>name</b></p>
+							<li/>
+		<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+							<b>vernacular_names</b></p>
+						</ul>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>model_implementation</b></p>
+						<ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>version</b></p>
+						</ul>
+					</ul>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<table width="485" cellpadding="7" cellspacing="0">
+						<col width="134">
+						<col width="41">
+						<col width="117">
+						<col width="135">
+						<tr valign="top">
+							<td width="134" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>JSON
+								field</b></i></font></p>
+							</td>
+							<td width="41" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>data-<br/>
+		type</b></i></font></p>
+							</td>
+							<td width="117" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>values</b></i></font></p>
+							</td>
+							<td width="135" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>description</b></i></font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="134" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>taxa</b></font></p>
+							</td>
+							<td width="41" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">array</font></p>
+							</td>
+							<td width="117" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">list
+								of records of taxa included in implementation</font></p>
+							</td>
+							<td width="135" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">see
+								values</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="134" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>taxa[...].id</b></font></p>
+							</td>
+							<td width="41" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="117" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">unique
+								taxon identifier in format {id_at_source}@{source_identifier}</font></p>
+							</td>
+							<td width="135" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">identifies
+								taxa in and across sources</font></p>
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>NB</b></font><font size="2" style="font-size: 9pt">
+								source_identifier = “WRN” for waarneming.nl</font></p>
+								<p style="orphans: 0; widows: 0"><br/>
+
+								</p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="134" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>taxa[...].name</b></font></p>
+							</td>
+							<td width="41" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="117" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">scientific
+								name of the taxon</font></p>
+							</td>
+							<td width="135" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">accepted
+								scientific name for taxon</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="134" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>taxa[...].<br/>
+		vernacular_names</b></font></p>
+							</td>
+							<td width="41" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">map</font></p>
+							</td>
+							<td width="117" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i>key</i></font><font size="2" style="font-size: 9pt">:
+								language code</font></p>
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i>value</i></font><font size="2" style="font-size: 9pt">:
+								vernacular name</font></p>
+							</td>
+							<td width="135" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">vernacular
+								names for taxon, can be empty</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="134" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>model_implementation.version</b></font></p>
+							</td>
+							<td width="41" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="117" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">unique
+								implementation identifier</font></p>
+							</td>
+							<td width="135" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">see
+								values</font></p>
+							</td>
+						</tr>
+					</table>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+
+					</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">response (error):</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					HTTP code: 400</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;model_implementation_not_found&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;The model implementation with the
+					requested tag does not exist&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+
+					</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">example request:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">curl
+					</font></font><a href="https://identify.biodiversityanalysis.nl/v1/observation/taxa/benlall"><font color="#1155cc"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><u>https://identify.biodiversityanalysis.nl/v1/observation/taxa/benlall</u></font></font></font></a></p>
+					<p style="margin-bottom: 0in"><br/>
+
+					</p>
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">curl
+					</font></font><a href="https://identify.biodiversityanalysis.nl/v1/observation/taxa/benlall?id=20796@WRN"><font color="#1155cc"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><u>https://identify.biodiversityanalysis.nl/v1/observation/taxa/benlall?id=20796@WRN</u></font></font></font></a></p>
+					<p style="margin-bottom: 0in"><br/>
+
+					</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">example response:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;taxa&quot;:
+					[</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;id&quot;:
+					&quot;20796@WRN&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;name&quot;:
+					&quot;Abax parallelepipedus&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;vernacular_names&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">        <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;nl&quot;:
+					&quot;Bosbulldozer&quot;</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;id&quot;:
+					&quot;153533@WRN&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;name&quot;:
+					&quot;Abia aenea&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;vernacular_names&quot;:
+					{}</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">],</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;model_implementation&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;version&quot;:
+					&quot;1fd68f8c8cb93ec4e45049fcf9a056628e9599aa815790a2a7b568aa&quot;</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in"><br/>
+
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">Changes w.r.t. to beta (see
+		<a href="https://identify.biodiversityanalysis.nl/beta/observation/docs/api"><font color="#1155cc"><u>https://identify.biodiversityanalysis.nl/beta/observation/docs/api</u></font></a>)</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">The output structure is changed
+			from a map to a list</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in"><b>Implementation notes</b></p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">In the demonstrator the
+			vernacular name (if present) is now retrieved from the taxa endpoint
+			(with id filter) instead of the identify endpoint</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in"><a name="wt7oaizfq0ud"></a><br/>
+
+		</p>
+		<table width="600" cellpadding="7" cellspacing="0">
+			<col width="87">
+			<col width="483">
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">title:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0"><b>Observation Identification
+					Service - Documentation</b></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">description:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">provides structured documentation
+					for model</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>endpoint:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">/v1/observation/documentation/&lt;tag&gt;</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>method:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">GET</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>parameters:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="orphans: 0; widows: 0">None</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p>response (successful):</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">HTTP code:
+					200</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0">JSON-structure,
+					containing the following elements:</p>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<ul>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>release_notes</b></p>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>description</b></p>
+						<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>use_policy</b></p>
+						<ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>unauthorized</b></p>
+							<ul>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>max_per_day</b></p>
+							</ul>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>authorized</b></p>
+							<ul>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>max_per_day</b></p>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>url</b></p>
+								<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>authentication</b></p>
+							</ul>
+						</ul>
+						<li/>
+		<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+						<b>model_implementation:</b></p>
+						<ul>
+							<li/>
+		<p align="left" style="margin-bottom: 0in; border: none; padding: 0in; page-break-inside: auto; orphans: 0; widows: 0; page-break-after: auto">
+							<b>class_count</b></p>
+							<li/>
+		<p style="margin-bottom: 0in; orphans: 0; widows: 0"><b>version</b></p>
+						</ul>
+					</ul>
+					<p style="margin-bottom: 0in; orphans: 0; widows: 0"><br/>
+
+					</p>
+					<table width="485" cellpadding="7" cellspacing="0">
+						<col width="157">
+						<col width="42">
+						<col width="119">
+						<col width="109">
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>JSON
+								field</b></i></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>data-<br/>
+		type</b></i></font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>values</b></i></font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i><b>description</b></i></font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>release_notes</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">map</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i>key</i></font><font size="2" style="font-size: 9pt">:
+								language code</font></p>
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i>value</i></font><font size="2" style="font-size: 9pt">:
+								JSON escaped HTML</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">Release
+								notes indicate changes a.o. changes w.r.t. to previous models</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>description</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">map</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="margin-bottom: 0in; orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i>key</i></font><font size="2" style="font-size: 9pt">:
+								language code</font></p>
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><i>value</i></font><font size="2" style="font-size: 9pt">:
+								JSON escaped HTML</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">The
+								description is a natural language description of what the model
+								caurl
+								https://identify.biodiversityanalysis.nl/v1/observation/documentation/benlalln
+								do (and can’t)</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>use_policy.unauthorized.<br/>
+		max_per_day<br/>
+		</b></font><br/>
+
+								</p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">int</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">[0,
+								2^32 - 1]</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">Maximum
+								number of identifications per day without authentication</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>use_policy.authorized.<br/>
+		max_per_day</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0">“<font size="2" style="font-size: 9pt">fair
+								use”</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">Indicates
+								the conditions of use of the API when authorized</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>use_policy.authorized.url</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">valid
+								URL</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">URL
+								to the authorized version of the service</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>use_policy.authorized.<br/>
+		authentication</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">&quot;https://tools.ietf.org/html/rfc7617&quot;</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">describes
+								the type of authentication used</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>model_implementation.<br/>
+		version</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">string</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">unique
+								implementation identifier</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">see
+								values</font></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td width="157" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt"><b>model_implementation.<br/>
+		class_count</b></font></p>
+							</td>
+							<td width="42" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">int</font></p>
+							</td>
+							<td width="119" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">[2,
+								2^32 - 1]</font></p>
+							</td>
+							<td width="109" style="border: 1.00pt solid #000000; padding: 0.07in">
+								<p style="orphans: 0; widows: 0"><font size="2" style="font-size: 9pt">Number
+								of classes (taxa) in implementation</font></p>
+							</td>
+						</tr>
+					</table>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					<br/>
+
+					</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">response (error):</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					HTTP code: 400</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					{</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  &quot;error&quot;: {</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;code&quot;: &quot;model_implementation_not_found&quot;,</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					    &quot;message&quot;: &quot;The model implementation with the
+					requested tag does not exist&quot;</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					  }</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					}</p>
+					<p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+					url
+					https://identify.biodiversityanalysis.nl/v1/observation/documentation/benlall</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">example request:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">curl
+					</font></font><a href="https://identify.biodiversityanalysis.nl/v1/observation/taxa/benlall"><font color="#1155cc"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><u>https://identify.biodiversityanalysis.nl/v1/observation/documentation/benlall</u></font></font></font></a></p>
+					<p style="margin-bottom: 0in"><br/>
+
+					</p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="87" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in">example response:</p>
+				</td>
+				<td width="483" style="border: 1.00pt solid #000000; padding: 0.07in">
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">{</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;release_notes&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;nl&quot;:
+					&quot;release notes in Nederlands&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;en&quot;:
+					&quot;release notes in English&quot;</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;description&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;nl&quot;:
+					&quot;De webservice herkent in Nederland voorkomende soorten
+					planten, dieren en paddenstoelen op basis van veldfoto\u2019s. Het
+					onderliggende herkenningsmodel is getraind op basis van
+					waarnemingfoto\u2019s van waarneming.nl. Hier vind je een lijst
+					van alle 8.756 soorten die in het model voorkomen. De webservice
+					herkent veel soorten, maar gecultiveerde of exotische soorten
+					zoals sommige sierplanten en huisdierrassen worden niet altijd
+					correct herkend.\r\n\r\nBeeldherkenning is een eerste stap naar
+					identificatie van een soort. Raadpleeg altijd andere bronnen om
+					kenmerken te checken of foto's te vergelijken. Dit kan
+					bijvoorbeeld op SoortenRegister en Waarneming.nl.&quot;</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;use_policy&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;unauthorized&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;max_per_day&quot;:
+					10</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;authorized&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;max_per_day&quot;:
+					&quot;fair use&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;url&quot;:
+					&quot;https://identify.biodiversityanalysis.nl/v1/observation/identify/benlall/auth&quot;,</font></font></p>
+					<p style="margin-bottom: 0in">      <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;authentication&quot;:
+					&quot;https://tools.ietf.org/html/rfc7617&quot;  </font></font>
+					</p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">},</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;model_implementation&quot;:
+					{</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;class_count&quot;:
+					8756,</font></font></p>
+					<p style="margin-bottom: 0in">    <font face="Consolas, serif"><font size="2" style="font-size: 10pt">&quot;version&quot;:
+					&quot;1fd68f8c8cb93ec4e45049fcf9a056628e9599aa815790a2a7b568aa&quot;</font></font></p>
+					<p style="margin-bottom: 0in">  <font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+					<p style="margin-bottom: 0in"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></p>
+				</td>
+			</tr>
+		</table>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in">Changes w.r.t. to beta (see
+		<a href="https://identify.biodiversityanalysis.nl/beta/observation/docs/api"><font color="#1155cc"><u>https://identify.biodiversityanalysis.nl/beta/observation/docs/api</u></font></a>)</p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">This endpoint does not exists in
+			the beta</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+		<p style="margin-bottom: 0in"><b>Implementation notes</b></p>
+		<ul>
+			<li/>
+		<p style="margin-bottom: 0in">The HTML documentation pages
+			include the information from the documentation API endpoint</p>
+		</ul>
+		<p style="margin-bottom: 0in"><br/>
+
+		</p>
+
+	</div>
+</body>
+
+<script>
+$(document).ready(function()
+{
+	appendHtmlFileToBody( "_header.html", true );
+	appendHtmlFileToBody( "_footer.html" );
+	appendHtmlFileToBody( "_googleAnalytics.html" );
+})
+</script>
+
+
+</html>
