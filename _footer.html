@@ -12,7 +12,7 @@
 
           <p class="w3-small">
             <a id="guiDocLink" href="doc.html" target=""><text>guiDocItem</text></a><br />
-            <a id="apiDocLink" href="" target="_blank"><text>apiDocItem</text></a><br />
+            <a id="apiDocLink" href="api.html" target="_blank"><text>apiDocItem</text></a><br />
             <a id="taxonLink" href="" target="_blank"><text>taxonDocItem</text></a><br />
             <a href="mnailto:identify@naturalis.nl"><text>contactItem</text></a>
           </p>
@@ -57,3 +57,14 @@
     </div>
 
 </footer>
+
+
+
+<script>
+
+$(document).ready(function()
+{
+  $("#taxonLink").attr("href",taxonIdentUrl.replace('/auth',''));
+})
+
+</script>
