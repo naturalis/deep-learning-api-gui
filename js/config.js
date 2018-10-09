@@ -13,8 +13,7 @@ var texts = {
     "mainTitle" : "Soortherkenning",
     "subTitle" : "Demonstratie-site van de service voor herkenning van in het wild voorkomende Nederlandse en Belgische soorten op basis van veldfoto's",
     "resultsPlaceholder" : "resultaten", 
-    "dropzoneStartMessage": `<br />Voor identificatie, <i>drag & drop</i> hier afbeelding(en),<br/>klik op de upload-knop om afbeelding(en) te selecteren<br/>
-      of plak een afbeelding uit het klembord (ctrl+v).<br /><br />
+    "dropzoneStartMessage": `<br />Voor identificatie, <i>drag & drop</i> hier afbeelding(en)<br/>of klik op de upload-knop om afbeelding(en) te selecteren.<br /><br />
       Voor nog betere resultaten: voeg meerdere afbeeldingen <b>tegelijk</b> toe van dezelfde waarneming (maximaal 4).`,
     "dropzoneStartMessageMobile": `<br /><br /><br />Klik op de upload-knop om een foto te maken of te selecteren.`,
     "sourceLine1" : "Deze service raadpleegt het herkenningsmodel van <a href='https://waarneming.nl/' target='_blank'>Waarneming.nl</a>",
@@ -31,7 +30,8 @@ var texts = {
     "httpError400": "Upload minimaal &eacute;&eacute;n foto.",
     "httpError405": "De API accepteert alleen met POST-requests.",
     "httpError415": "U kunt alleen bestanden van het type JPG en PNG uploaden.",
-    "httpError500": "Er is een fout opgetreden. Probeer het opnieuw."
+    "httpError500": "Er is een fout opgetreden. Probeer het opnieuw.",
+    "serverResponse0" : "De server geeft geen antwoord. Probeer het later opnieuw."
   }
 }
 

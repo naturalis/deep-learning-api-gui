@@ -123,6 +123,11 @@ $(document).ready(function()
       },
       error: function(file, message, xhr)
       {
+
+        if(message=="Server responded with 0 code.")
+        {
+          message = getText("serverResponse0");
+        } else
         if (xhr && (xhr.status == 429 || xhr.status == 0))
         {
           message = getText("httpError429");

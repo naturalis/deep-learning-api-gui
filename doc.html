@@ -29,10 +29,12 @@
 <h1>Wat doet deze soortherkenning&shy;service?</h1></a>
         
     <p>
-        De service herkent in Nederland en België voorkomende soorten planten, dieren en paddenstoelen op basis van veldfoto’s.
+        Deze demonstratie-site is bedoeld voor het op basis van veldfoto’s herkennen van in Nederland en België voorkomende
+        soorten planten, dieren en paddenstoelen. De site maakt gebruik van de soortherkenning­service van Naturalis, Cosmonio en
+        Observation.org.<br />
         Het onderliggende herkenningsmodel is getraind op basis van waarnemingfoto’s van waarneming.nl. <a
-           id="taxonLink" href="" target="_blank">Hier vind je een lijst van alle 16148 soorten</a> (JSON) die in
-        het model voorkomen. De webservice herkent veel soorten, maar gecultiveerde of exotische soorten zoals sommige
+           id="taxonLink" href="" target="_blank">Hier vind je een lijst van alle <span class="numberOfTaxa">16148</span> soorten</a> (JSON) die in
+        het model voorkomen. De service herkent veel soorten, maar gecultiveerde of exotische soorten zoals sommige
         sierplanten en huisdierrassen worden niet altijd correct herkend.
     </p>
 
@@ -51,48 +53,41 @@
         identificeren plant of dier zo prominent mogelijk in de foto te zien is; gebruik scherpe
         foto’s, en maak zo nodig handmatig een uitsnede uit de foto.<br/>
         Wanneer je meerdere foto's van dezelfde waarneming hebt, kan het de kans op een goede identificatie vergroten
-        wanneer je meer dan een foto tegelijk upload. Je kunt maximaal vier foto's tegelijk uploade (werkt niet op een mobiel apparaat).
+        wanneer je meer dan een foto tegelijk upload. Meerdere foto’s tegelijk uploaden van verschillende soorten heeft geen zin.
     </p>
 
-    <h2>Uploaden van foto’s</h2>
     <p>
-        Open de webpagina van de herkenningsservice en voeg de foto of foto’s van je waarneming toe. Dit kan op drie
-        manieren:
+        Uploaden van foto’s kan op drie manieren:
     </p>
 
     <ul>
         <li>Bestanden selecteren. Klik op het grote witte vlak. Er opent een ‘open bestand’-venster. Navigeer naar de
             bestandslokatie van de foto’s. Selecteer een of meerdere foto’s van dezelfde waarneming. Je selecteert
             meerdere foto’s door de Ctrl-toets vast te houden en de betreffende bestanden aan te klikken. Klik
-            vervolgens op ‘open’. De bestanden worden vervolgens automatisch geupload.
+            vervolgens op ‘open’. De bestanden worden vervolgens automatisch geüpload.
         </li>
         <li>Drag & drop. Selecteer de foto of foto’s in een verkenner, sleep ze naar de webpagina en laat ze los boven
-            het vlak wanneer het vlak groen oplicht. De bestanden worden vervolgens automatisch geupload.
+            het vlak wanneer het groen kleurt. De bestanden worden vervolgens automatisch geüpload.
         </li>
         <li>Plakken uit de copy/paste-buffer. Wanneer je een afbeelding hebt gekopieerd, kun je die in de webpagina
-            plakken. Let op, dit
-            werkt alleen als je de afbeelding zelf hebt gekopieerd, niet het bestand. Een manier om dat te doen is door
-            met de rechter
-            muisknop op een afbeelding in je webbrowser te klikken en ‘Afbeelding kopiëren’ te kiezen. De afbeelding zit
-            nu in de
-            copy/paste-buffer. Ga naar de webpagina van de herkenningsservice en klik Ctrl+V (plakken). De afbeelding
-            verschijnt in het
-            uploadvlak en wordt naar de server gestuurd. Op deze manier kan maar een afbeelding tegelijk worden
-            geupload.
+            plakken. Let op, dit werkt alleen als je de afbeelding zelf hebt gekopieerd, niet het bestand. Een manier 
+            om dat te doen is door met de rechter muisknop op een afbeelding in je webbrowser te klikken en ‘Afbeelding 
+            kopiëren’ te kiezen. De afbeelding zit nu in de copy/paste-buffer. Ga naar de webpagina van de herkenningsservice
+            en klik Ctrl+V (plakken). De afbeelding verschijnt in het uploadvlak en wordt naar de server gestuurd. Op deze
+            manier kan maar een afbeelding tegelijk worden geüpload.
         </li>
     </ul>
 
     <p>
-        De service kan maximaal vier afbeeldingen tegelijk per identificatie verwerken (één als je de site op een mobiel
-        beschikbaar benadert).
-        Meerdere foto’s tegelijk uploaden van verschillende soorten heeft geen zin.
-        De service accepteert JPG, PNG en BMP bestanden. Er is op dit moment geen beperking aan de omvang van de
+        Wanneer je de site via een laptop of gewone computer gebruikt, kan de service maximaal vier afbeeldingen tegelijk per 
+        identificatie verwerken.<br />
+        De service accepteert bestanden van de typen JPG, PNG en BMP. Er is op dit moment geen beperking aan de omvang van de
         bestanden.
     </p>
 
     <h2>Identificatie</h2>
     <p>
-        Nadat je een foto of foto’s hebt geupload, voert de webservice automatisch de soortherkenning uit, en berekent de
+        Nadat je een foto of foto’s hebt geüpload, voert de webservice automatisch de soortherkenning uit, en berekent de
         waarschijnlijkheid waarmee je waarneming overeenkomt met de in het model aanwezige soorten. Het resultaat daarvan is
         een lijstje van drie mogelijke soorten, in aflopende volgorde van waarschijnlijkheid. De berekende waarschijnlijkheden worden
         niet getoond; in plaats daarvan wordt per soort indicatie getoond door middel van een metertje. Wanneer het model voor de eerste
@@ -154,6 +149,15 @@ $(document).ready(function()
         appendHtmlFileToBody( "_footer.html" );
         appendHtmlFileToBody( "_googleAnalytics.html" );
     })
+
+    $.ajax(taxonIdentUrl).done(function(data)
+    {
+        if (data.taxa)
+        {
+            $('.numberOfTaxa').html(data.taxa.length);
+        }
+        
+    });
 
 })
 
