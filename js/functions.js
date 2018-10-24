@@ -1,3 +1,11 @@
+function onDropReset()
+{
+    zone.removeAllFiles();      
+    $("#message").toggle(false);
+    $("#results").html("");
+    $(".dropzone").css('background-color','#fff');
+}
+
 function appendHtmlFileToBody( file, prepend )
 {
 	$.ajax({
