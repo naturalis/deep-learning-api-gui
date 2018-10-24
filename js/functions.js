@@ -19,9 +19,7 @@ function appendHtmlFileToBody( file, prepend )
 	    {
 	      $(this).replaceWith(getText($(this).text()));
 	    });
-
 	});
-
 }
 
 function getText(tag)
@@ -56,6 +54,14 @@ function makeJQueryResistantId(id)
 
 function printPredictions()
 {
+
+	if (lastResults.predictions[0].probability<minProbability)
+	{
+        $("#message").show();
+        $("#message").html(getText("noResults"));
+		return;
+	}
+
 	var certainty=false;
 	var buffer=Array();
 	var vals=Array();

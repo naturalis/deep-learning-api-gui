@@ -87,6 +87,7 @@ $(document).ready(function()
       autoProcessQueue: true,
       method: "post",
       capture: null,
+      acceptedFiles: "image/*",
       thumbnailHeight: 200,
       thumbnailWidth: 200,
       thumbnailMethod: "contain",
@@ -253,6 +254,12 @@ $(document).ready(function()
 <div class="inline-templates" id="resultTableTpl">
 <!--
   <table id="probabilities">%body%</table>
+-->
+</div>
+
+<div class="inline-templates" id="noResultTableTpl">
+<!--
+  <table id="probabilities"><tr><td class="noResultsCell">%text%</td></tr></table>
 -->
 </div>
 <!-- /templates -->

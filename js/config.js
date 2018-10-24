@@ -2,10 +2,9 @@ var servicePath = "https://identify.biodiversityanalysis.nl/alpha/observation/";
 var modelname = "benlall";
 var apiUrl = servicePath + "identify/" + modelname;
 var taxonIdentUrl = servicePath + "taxa/" + modelname;
-
 var maxFileUploads = { mobile: 1, desktop: 4 };
 var maxResults = 3;
-
+var minProbability = 0.10;
 var currentLanguage = "nl";
 
 var texts = {
@@ -31,7 +30,7 @@ var texts = {
     "httpError405": "De API accepteert alleen met POST-requests.",
     "httpError415": "U kunt alleen bestanden van het type JPG en PNG uploaden.",
     "httpError500": "Er is een fout opgetreden. Probeer het opnieuw.",
-    "serverResponse0" : "De server geeft geen antwoord. Probeer het later opnieuw."
+    "serverResponse0" : "De server geeft geen antwoord. Probeer het later opnieuw.",
+    "noResults" : "De service heeft geen soorten herkend op uw foto('s).",
   }
 }
-
