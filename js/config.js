@@ -25,12 +25,12 @@ var texts = {
     "initiativeHeader" : "Een initiatief van",
     "cooperationHeader" : "In samenwerking met",
     "moreInfo" : "meer info:",
-    "httpError429": "Het maximum aantal herkenningen per dag is bereikt. Wilt u meer beelden herkennen neem dan contact met ons op.",
+    "httpError429": "Het maximum aantal herkenningen per dag is bereikt. Wil je meer beelden herkennen neem dan contact met ons op.",
     "httpError400": "Upload minimaal &eacute;&eacute;n foto.",
     "httpError405": "De API accepteert alleen met POST-requests.",
-    "httpError415": "U kunt alleen bestanden van het type JPG en PNG uploaden.",
+    "httpError415": "Je kunt alleen bestanden van het type JPG en PNG uploaden.",
     "httpError500": "Er is een fout opgetreden. Probeer het opnieuw.",
     "serverResponse0" : "De server geeft geen antwoord. Probeer het later opnieuw.",
-    "noResults" : "De service heeft geen soorten herkend op uw foto('s).",
+    "noResults" : "De service heeft geen soorten herkend op je foto('s).",
   }
 }
