@@ -1,10 +1,10 @@
-var servicePath = "https://identify.biodiversityanalysis.nl/alpha/observation/";
+var servicePath = "https://identify.biodiversityanalysis.nl/v1/observation/";
 var modelname = "benlall";
 var apiUrl = servicePath + "identify/" + modelname;
 var taxonIdentUrl = servicePath + "taxa/" + modelname;
 var maxFileUploads = { mobile: 1, desktop: 4 };
 var maxResults = 3;
-var minProbability = 0.10;
+var minProbability = 0.50;
 var currentLanguage = "nl";
 
 var texts = {

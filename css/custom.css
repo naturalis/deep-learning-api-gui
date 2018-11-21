@@ -184,3 +184,8 @@ body {
 .taxonLinks a:hover {
 	color: #f66;
 }
+
+.dropzone .dz-preview .dz-image {
+	background-color: #efefef;
+}
+

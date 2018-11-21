@@ -88,8 +88,8 @@ $(document).ready(function()
     method: "post",
     capture: null,
     acceptedFiles: "image/*",
-    thumbnailHeight: 200,
-    thumbnailWidth: 200,
+    thumbnailHeight: 120,
+    thumbnailWidth: 120,
     thumbnailMethod: "contain",
     clickable: "#uploadButton",
     dictDefaultMessage: isMobile ? getText("dropzoneStartMessageMobile") : getText("dropzoneStartMessage"),
@@ -203,6 +203,12 @@ $(document).ready(function()
   appendHtmlFileToBody( "_footer.html" );
   appendHtmlFileToBody( "_googleAnalytics.html" );
 
+
+credentials.user='deafeningSwan';
+credentials.password='WsP7D57vqXsW7Z2KJtXNXL2xfJYtRjhW';
+doLogin();
+
+
 });
 
 </script>
@@ -245,7 +251,7 @@ $(document).ready(function()
 
 <div class="inline-templates" id="nsrLinkTpl">
 <!--
-<a href="http://www.nederlandsesoorten.nl/nsr/concept/%taxon_id%" target="_blank">Nederlands Soortenregister</a>
+<a id="nsr-link-%taxon_id%" href="http://www.nederlandsesoorten.nl/nsr/concept/" target="_blank">Nederlands Soortenregister</a>
 -->
 </div>
 

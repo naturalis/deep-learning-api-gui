@@ -81,21 +81,10 @@ function printPredictions()
 
 		taxonIds.push(s.taxon.id);
 
-		if (s.alternate_taxon_ids)
-		{
-			for(var j=0;j<s.alternate_taxon_ids.length;j++)
-			{
-				if (s.alternate_taxon_ids[j].indexOf('@NSR')>-1)
-				{
-					var nsrId = s.alternate_taxon_ids[j].split('@')[0];
-					break;
-				}
-			}
-		}
-
 		var gaugeTpl=fetchTemplate('gaugeTpl');
 		var resultRowTpl=fetchTemplate('resultRowTpl');
-		var nsrTpl=nsrId ? fetchTemplate('nsrLinkTpl').replace(/%taxon_id%/g,nsrId) : "" ;
+		// var nsrTpl=nsrId ? fetchTemplate('nsrLinkTpl').replace(/%taxon_id%/g,s.taxon.id) : "" ;
+		var nsrTpl=fetchTemplate('nsrLinkTpl').replace(/%taxon_id%/g,makeJQueryResistantId(s.taxon.id));
 
 		buffer.push(
 			resultRowTpl
@@ -144,7 +133,9 @@ function taxonLookup(id)
 	})
 	.done( function( data )
 	{
+
 		var name="";
+		var nsrId=null;
 
 		if (data.taxa && data.taxa[0] && data.taxa[0]["vernacular_names"])
 		{
@@ -162,6 +153,18 @@ function taxonLookup(id)
 			}
 		}
 
+		if (data.taxa && data.taxa[0] && data.taxa[0]["alternate_ids"])
+		{
+			for (var i=0;i<data.taxa[0]["alternate_ids"].length;i++)
+			{
+				if (data.taxa[0]["alternate_ids"][i].indexOf("@NSR")!=-1)
+				{
+					var nsrId = data.taxa[0]["alternate_ids"][i].substring(0,data.taxa[0]["alternate_ids"][i].indexOf("@NSR"));
+					break;
+				}
+			}
+		}
+
 		var lookupId = makeJQueryResistantId(id);
 
 		if (name.length>0)
@@ -173,6 +176,18 @@ function taxonLookup(id)
 			$('#vernacular-' + lookupId).html($('#scientific-' + lookupId).html()).addClass("italic");
 			$('#scientific-' + lookupId).remove();
 		}
+
+		if (nsrId)
+		{
+			$('#nsr-link-' + lookupId).attr("href",$('#nsr-link-' + lookupId).attr("href") + nsrId);
+		}
+		else
+		{
+			$('#nsr-link-' + lookupId).remove();
+		}
+		
+
+
 	});
 }
 
