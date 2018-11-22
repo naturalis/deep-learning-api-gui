@@ -187,5 +187,10 @@ body {
 
 .dropzone .dz-preview .dz-image {
 	background-color: #efefef;
+	background-color: yellow;
+	border-radius: 0px;
 }
 
+.dropzone .dz-preview.dz-file-preview .dz-image {
+	border-radius: 0px;
+}
